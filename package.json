@@ -1,0 +1,19 @@
+{
+  "name": "e-fatura-authorization",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "SEFAUN",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.4.5",
+    "axios": "^0.24.0",
+    "express": "^4.17.2",
+    "google-protobuf": "^3.19.1",
+    "jsonwebtoken": "^8.5.1",
+    "protobufjs": "^6.11.2"
+  }
+}

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package checkJwt;
+
+service JWTController {
+  rpc checkJWTToken (Token) returns (CheckJWTTokenResult);
+}
+
+message Token {
+  string token = 1;
+}
+
+message CheckJWTTokenResult {
+  bool success = 1;
+  string userInfo = 2;
+}
