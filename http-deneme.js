@@ -19,10 +19,13 @@ async function run() {
 
 
   app.post('/user', express.text({ type: '*/*' }), (req, res) => {
+
+    console.log("2-) server gelen -> ", req.body)
     // Assume `req.body` contains the protobuf as a utf8-encoded string
-    const user = User.decode(Buffer.from(req.body));
-    Object.assign(doc, user);
-    res.end();
+    const user = User.decode(new Buffer.from(req.body));
+
+    console.log("3-) server giden -> ", User.encode(User.toObject(user)).finish())
+    res.send(User.encode(User.toObject(user)).finish())
   });
 
 
@@ -33,10 +36,16 @@ async function run() {
 
   // "Before POST User { name: 'Bill', age: 30 }"
   /*console.log('Before POST', data, User.decode(Buffer.from(data)));*/
-  const postBody = User.encode({ username: 'Bill', password: "asfsf" }).finish()
-  console.log(postBody)
- /* const dedikoducuirem = await axios.post('http://localhost:3000/user', postBody)
-  console.log(dedikoducuirem.data)*/
+
+  const postBody = User.encode({ username: 'Sefa Ün', password: "Tmm mı şifrem benim", status: 10 }).finish()
+  /*console.log(postBody.toString())
+  console.log(postBody)*/
+
+  /*const user = User.decode(postBody)
+  console.log(User.toObject(user))*/
+  console.log("1-) client giden -> ", postBody)
+  const response = await axios.post('http://localhost:3000/user', postBody)
+  console.log("4-) client cevap -> ", response.data)
 
   //data = await axios.get('http://localhost:3000/user').then(res => res.data);
   // "After POST User { name: 'Joe', age: 27 }"
