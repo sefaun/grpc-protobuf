@@ -1,3 +1,5 @@
+# GRPC Example
+
 ## Installation
 
 ```sh
